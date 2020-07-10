@@ -29,9 +29,10 @@ const filterByType = (type, ...values) => values.filter(value => typeof value ==
 	tryFilterByType = (type, values) => {
 		// пытаемся выполнить код
 		try {
-			// получаем отфильтрованный массив 
+			// получаем отфильтрованный массив и делаем из него строку
 			const valuesArray = eval(`filterByType('${type}', ${values})`).join(", ");		
-			// проверяем, пустой ли он
+			console.log(typeof valuesArray);
+			// проверяем, пустая ли она
 			const alertMsg = (valuesArray.length) ?
 			// если нет, то выводим сообщение "Данные с типом таким-то: такие-то"
 				`Данные с типом ${type}: ${valuesArray}` :
