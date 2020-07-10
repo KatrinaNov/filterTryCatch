@@ -21,7 +21,9 @@ const filterByType = (type, ...values) => values.filter(value => typeof value ==
 
 	tryFilterByType = (type, values) => {
 		try {
-			const valuesArray = eval(`filterByType('${type}', ${values})`).join(", ");
+			// const valuesArray = eval(`filterByType('${type}', ${values})`).join(", ");
+			const valuesArray = new Function(`return filterByType('${type}', ${values});`)().join(", ");
+			console.log(valuesArray);
 			const alertMsg = (valuesArray.length) ?
 				`Данные с типом ${type}: ${valuesArray}` :
 				`Отсутствуют данные типа ${type}`;
